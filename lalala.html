@@ -61,7 +61,8 @@
 
   <div class="card">
     <div>
-      <button onclick="openCamera()">Open Camera</button>
+      <button onclick="openCamera('user')">Open Front Camera</button>
+      <button onclick="openCamera('environment')">Open Back Camera</button>
       <button onclick="captureImage()">Click Image</button>
       <button onclick="sendImageToFirebase()">Send to Firebase</button>
     </div>
@@ -81,9 +82,13 @@
     const cameraStreamElement = document.getElementById('cameraStream');
     let stream, imageCapture;
 
-    async function openCamera() {
+    async function openCamera(facingMode) {
       try {
-        stream = await navigator.mediaDevices.getUserMedia({ video: true });
+        stream = await navigator.mediaDevices.getUserMedia({
+          video: {
+            facingMode: facingMode
+          }
+        });
         cameraStreamElement.srcObject = stream;
       } catch (error) {
         console.error('Error opening camera:', error);
