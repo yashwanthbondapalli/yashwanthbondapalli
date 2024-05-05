@@ -1,22 +1,58 @@
 <!DOCTYPE html>
+<html>
 <head>
-<title>Ytense</title>
-<link href="https://fonts.googleapis.com/css?family=Roboto:100" rel="stylesheet">
-<link rel="stylesheet" href="Ytense.css">
+    <title>navbar</title>
+    <link rel="stylesheet" href="Ytense.css">
 </head>
 <body>
 
-  <div class="fullbody">
+<div class="navbar">
+    <input type="radio" id="radio1" name="position" hidden/>
+    <input type="radio" id="radio2" name="position" hidden/>
+    <input type="radio" id="radio3" name="position" checked/ hidden>
+    <input type="radio" id="radio4" name="position" hidden/>
+    <input type="radio" id="radio5" name="position" hidden/>
+    
+    <main id="carousel">
+        <div class="item">
+            <img src="h.gif" alt="noimg" width="100%" height="80%"/>
+            <a href="/" style="color: white;">Learn More</a></div>
+        <div class="item">   
+            <img src="h.gif" alt="noimg" width="100%" height="80%"/>
+            <a href="/" style="color: white;">Learn More</a></div>
+        <div class="item">   
+            <img src="h.gif" alt="noimg" width="100%" height="80%"/>
+            <a href="/" style="color: white;">Learn More</a></div>
+        <div class="item">   
+            <img src="h.gif" alt="noimg" width="100%" height="80%"/>
+            <a href="/" style="color: white;">Learn More</a></div>
+        <div class="item">   
+            <img src="h.gif" alt="noimg" width="100%" height="80%"/>
+            <a href="/" style="color: white;">Learn More</a></div>
+    <main>
+</div>
 
-<p id='head1' class='header'>Your Dreams</p>
-<p id='head2' class='header'>Our Solutions</p>
-<p id='head5' class='header'>Welcome to Ytense</p>
-<button>Continue</button>
+<div class="fullbody">
 
-  </div>
+    <p id='head1' class='header'>Your Dreams</p>
+    <p id='head2' class='header'>Our Solutions</p>
+    <p id='head5' class='header'>Welcome to Ytense</p>
+    
+</div>
 
+<div class="buttonsbox">
+    <button type="button" class="b1" onclick="checkRadio('radio1')">1</button>
+    <button type="button" class="b2" onclick="checkRadio('radio2')">2</button>
+    <button type="button" class="b3" onclick="checkRadio('radio3')">3</button>
+    <button type="button" class="b4" onclick="checkRadio('radio4')">4</button>
+    <button type="button" class="b5" onclick="checkRadio('radio5')">5</button>
+</div>
 
-
+<script>
+    function checkRadio(radioId) {
+        document.getElementById(radioId).checked = true;
+    }
+</script>
 
 </body>
 </html>
