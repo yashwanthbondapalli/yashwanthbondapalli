@@ -8,7 +8,7 @@
 .bgimage {
     height:100vh;
     position:relative;
-background-color: #100e17;
+background-image: url(drop.gif);
 background-repeat: no-repeat;
 background-attachment: fixed;
 background-size: 100% 100%;
