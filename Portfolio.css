@@ -1,0 +1,84 @@
+/* hero background image */
+.bgimage1 {
+  height:100vh;
+  position:relative;
+  background-image: url(cube.gif);
+background-repeat: no-repeat;
+background-attachment: fixed;
+background-size: 100% 100%;
+}
+.bgimage {
+  height:100vh;
+  position:relative;
+background-repeat: no-repeat;
+background-attachment: fixed;
+background-size: 100% 100%;
+}
+.navbar-toggler-icon
+{
+  background-color: #ffffff;
+  color: #ffffff;
+  border-radius: 50%;
+}
+/* text css above hero image*/
+.hero_title {
+  font-size: 4.2rem;
+}
+.hero_desc {
+  font-size: 2rem;
+}
+.hero-text {
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+}
+.card {
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  color: #ffffff;
+  border: 1px solid #ccc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.bottom-left {
+  border-top-right-radius: 100%;
+  box-shadow: 0 -20px 80px rgba(118, 11, 211, 0.934);
+}
+.top-left {
+  box-shadow: 0 20px 80px rgba(173, 48, 158, 0.934);
+  border-bottom-right-radius: 100%;
+}
+.top-right {
+  box-shadow: 0 20px 80px rgba(11, 211, 11, 0.934);
+  border-bottom-left-radius: 100%;
+}
+.bottom-right {
+
+  border-top-left-radius: 100%;
+  box-shadow: 0 -20px 80px rgba(224, 231, 224, 0.934);
+}
+
+.top-left {
+  top: 0;
+  left: 0;
+}
+
+.top-right {
+  top: 0;
+  right: 0;
+}
+
+.bottom-left {
+  bottom: 0;
+  left: 0;
+}
+
+.bottom-right {
+  bottom: 0;
+  right: 0;
+}
