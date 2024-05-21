@@ -1,253 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Firebase Integration</title>
-  <style>
-    .card {
-      border: 1px solid #ccc;
-      padding: 20px;
-      margin: 10px;
-      border-radius: 8px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      display: flex;
-      flex-direction: column;
-    }
-
-    .card img {
-      max-width: 100%;
-      margin-bottom: 10px;
-    }
-
-    .card p {
-      margin: 0;
-    }
-
-    .card button {
-      margin-bottom: 10px;
-    }
-
-    .card video {
-      max-width: 100%;
-      margin-bottom: 10px;
-    }
-
-    .glow {
-      background-color: #4CAF50;
-      color: #fff;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Card Container</title>
+    <link rel="stylesheet" href="Portfolio.css">
 </head>
-
-<body>
-
-  <div class="card">
-    <button id="b1" onclick="updateFirebase('b1')">Button 1</button>
-  </div>
-
-  <div class="card">
-    <button id="b2" onclick="updateFirebase('b2')">Button 2</button>
-  </div>
-
-  <div class="card">
-    <button id="b3" onclick="updateFirebase('b3')">Button 3</button>
-  </div>
-
-  <div class="card">
-    <button id="b4" onclick="updateFirebase('b4')">Button 4</button>
-  </div>
-
-  <div class="card">
-    <div>
-      <button onclick="openCamera('user')">Open Front Camera</button>
-      <button onclick="openCamera('environment')">Open Back Camera</button>
-      <button onclick="captureImage()">Click Image</button>
-      <button onclick="sendImageToFirebase()">Send to Firebase</button>
+<body class="bgimage1">
+    <div class="container">
+        <div class="card top-left">Card 1</div>
+        <div class="card top-right">Card 2</div>
+        <div class="card bottom-left">Card 3</div>
+        <div class="card bottom-right">Card 4</div>
     </div>
-    <input type="text" id="imageDescription" placeholder="Image Description">
-    <video id="cameraStream" style="max-width: 100%;" autoplay muted></video>
-    <img id="capturedImage" style="max-width: 100%; display: none;" alt="Captured Image">
-  </div>
 
-  <div id="imageContainer" class="card"></div>
+            <!-- main banner -->
+            <section class="bgimage" id="home">
+              <div class="container-fluid">
+                  <div class="row">
+                  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 hero-text">
+                      <h2 class="hero_title">Vijay Devara</h2>
+                      <p class="hero_desc">Thanks for Connecting</p>
+                  </div>
+                  </div>
+              </div>
+          </section>
 
-  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-  <script>
-    const firebaseAPIUrl = 'https://ybrain-7c5b3-default-rtdb.firebaseio.com/ybrain.json';
-    const capturedImageElement = document.getElementById('capturedImage');
-    const imageDescriptionInput = document.getElementById('imageDescription');
-    const imageContainer = document.getElementById('imageContainer');
-    const cameraStreamElement = document.getElementById('cameraStream');
-    let stream, imageCapture;
+    
+<!-- about section-->
+<section id="aboutme" style="background-color: black;">
+  <div class="container mt-4 pt-4">
+      <h1 class="text-center" style="color: #fff;">About Me</h1>
+      <div class="row mt-4">
+          <div class="col-lg-4">
+              <img src="po1.png" class= "imageAboutPage" style="width: 20%;" alt="">
+          </div>
 
-    async function openCamera(facingMode) {
-      try {
-        stream = await navigator.mediaDevices.getUserMedia({
-          video: {
-            facingMode: facingMode
-          }
-        });
-        cameraStreamElement.srcObject = stream;
-      } catch (error) {
-        console.error('Error opening camera:', error);
-      }
-    }
+          <div class="col-lg-8" style="color: #fff;">
+              <p> Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged
+                  
+              </p>
+              <div class="row mt-3">
+                  <div class="col-md-6">
+                      <ul>
+                          <li>Name: John David</li>
+                          <li>Age: 28</li>
+                          <li>Occupation: Web Developer</li>
 
-    async function captureImage() {
-      try {
-        const track = stream.getVideoTracks()[0];
-        imageCapture = new ImageCapture(track);
-        const blob = await imageCapture.takePhoto();
-        const dataUrl = await blobToDataURL(blob);
-        capturedImageElement.src = dataUrl;
-        capturedImageElement.style.display = 'block';
-      } catch (error) {
-        console.error('Error capturing image:', error);
-      }
-    }
+                      </ul>
+                  </div>
+                  <div class="col-md-6">
+                      <ul>
+                          <li>Name: David Parker</li>
+                          <li>Age: 28</li>
+                          <li>Occupation: Web Developer</li>
 
-    async function sendImageToFirebase() {
-      try {
-        const imageDataURL = capturedImageElement.src;
-        const imageDescription = imageDescriptionInput.value.trim();
+                      </ul>
+                  </div>
+              </div>
+              <div class="row mt-3">
+                  <p> Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
+                      Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
+                  </p>
+              </div>
+          </div>
+      </div>
+</section>
 
-        if (!imageDataURL || !imageDescription) {
-          console.error('Please capture an image and provide a description.');
-          return;
-        }
 
-        const dataToSend = {
-          capturedImage: imageDataURL,
-          description: imageDescription,
-        };
 
-        const response = await fetch(firebaseAPIUrl, {
-          method: 'POST', // Use POST to add a new entry
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(dataToSend),
-        });
-
-        if (response.ok) {
-          console.log('Image sent to Firebase successfully.');
-        } else {
-          console.error('Error sending image to Firebase:', response.statusText);
-        }
-      } catch (error) {
-        console.error('Error sending image to Firebase:', error);
-      }
-    }
-
-    async function getAllImagesFromFirebase() {
-      try {
-        const response = await axios.get(firebaseAPIUrl);
-        const firebaseData = response.data;
-
-        if (firebaseData) {
-          imageContainer.innerHTML = ''; // Clear previous images
-
-          for (const key in firebaseData) {
-            const imageData = firebaseData[key];
-            if (imageData.capturedImage) {
-              const card = document.createElement('div');
-              card.classList.add('card');
-
-              const imgElement = document.createElement('img');
-              imgElement.src = imageData.capturedImage;
-              imgElement.alt = 'Image';
-
-              const descriptionElement = document.createElement('p');
-              descriptionElement.textContent = imageData.description;
-
-              card.appendChild(imgElement);
-              card.appendChild(descriptionElement);
-
-              imageContainer.appendChild(card);
-            }
-          }
-        } else {
-          console.error('No images available in Firebase.');
-        }
-      } catch (error) {
-        console.error('Error fetching images from Firebase:', error);
-      }
-    }
-
-    async function updateFirebase(buttonId) {
-      const button = document.getElementById(buttonId);
-      if (!button) {
-        console.error(`Button with id ${buttonId} not found.`);
-        return;
-      }
-
-      try {
-        const response = await axios.get(firebaseAPIUrl);
-        const firebaseData = response.data;
-
-        const currentState = firebaseData && firebaseData[buttonId] ? firebaseData[buttonId] : 0;
-
-        button.classList.toggle('glow', currentState === 1);
-
-        await axios.patch(firebaseAPIUrl, { [buttonId]: currentState === 1 ? 0 : 1 });
-
-      } catch (error) {
-        console.error('Error updating Firebase:', error);
-      }
-    }
-
-    async function fetchInitialData() {
-      try {
-        const response = await axios.get(firebaseAPIUrl);
-        const firebaseData = response.data;
-
-        for (const buttonId in firebaseData) {
-          const button = document.getElementById(buttonId);
-          if (button) {
-            const currentState = firebaseData[buttonId];
-            button.classList.toggle('glow', currentState === 1);
-          }
-        }
-      } catch (error) {
-        console.error('Error fetching initial Firebase data:', error);
-      }
-    }
-
-    setInterval(async () => {
-      try {
-        // Fetch all images from Firebase
-        await getAllImagesFromFirebase();
-
-        const response = await axios.get(firebaseAPIUrl);
-        const newFirebaseData = response.data;
-
-        for (const buttonId in newFirebaseData) {
-          const button = document.getElementById(buttonId);
-          if (button) {
-            const currentState = newFirebaseData[buttonId];
-            button.classList.toggle('glow', currentState === 1);
-          }
-        }
-      } catch (error) {
-        console.error('Error polling Firebase data:', error);
-      }
-    }, 5000);
-
-    fetchInitialData();
-
-    // Function to convert blob to data URL
-    function blobToDataURL(blob) {
-      return new Promise((resolve, reject) => {
-        const reader = new FileReader();
-        reader.onloadend = () => resolve(reader.result);
-        reader.onerror = reject;
-        reader.readAsDataURL(blob);
-      });
-    }
-  </script>
 
 </body>
-
 </html>
